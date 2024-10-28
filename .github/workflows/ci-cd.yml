@@ -37,6 +37,9 @@ jobs:
       - name: List Build Output
         run: ls -la ./storybook-static/  # Check if the directory exists
 
+      - name: Change Permissions for Storybook Build
+        run: chmod -R 777 ./storybook-static/  # Give all permissions to the storybook-static directory
+        
       - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v3
         with:
