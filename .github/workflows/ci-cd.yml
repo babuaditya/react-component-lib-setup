@@ -30,8 +30,8 @@ jobs:
         run: npm run build  # Rollup build command to create `dist`
 
       - name: Build Storybook
-        run: npm run build-storybook  # Storybook build command to create `storybook-static`
-
+        run: npm run build-storybook 
+      - name: List Build Output # Storybook build command to create `storybook-static`
         run: ls -la ./storybook-static/
 
       - name: Upload Storybook Artifacts
