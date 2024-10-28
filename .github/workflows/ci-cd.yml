@@ -67,7 +67,7 @@ jobs:
           echo "Vercel Token: $VERCEL_TOKEN"  # Consider hiding this in production
           
           npm install -g vercel
-          vercel --prod --yes --token "$VERCEL_TOKEN" --scope "$TEAM_TOKEN" --force
+          vercel --prod --yes --token "$VERCEL_TOKEN" --scope "$TEAM_TOKEN" ./storybook-static 
 
   # Publish to npm
   publish:
