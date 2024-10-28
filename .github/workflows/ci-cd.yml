@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Run on Windows
 
     steps:
       - name: Checkout code
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 'lts/*'  # Latest Node.js LTS version
           cache: 'npm'
 
       - name: Install dependencies
@@ -32,32 +32,32 @@ jobs:
         run: npm run build-storybook 
 
       - name: List Project Directory
-        run: ls -la ./  # List all files in the root directory
+        run: dir  # Windows command to list files in the root directory
 
       - name: List Build Output
-        run: ls -la ./storybook-static/  # Check if the directory exists
+        run: dir storybook-static  # Check if the directory exists
 
       - name: Change Permissions for Storybook Build
-        run: chmod -R 777 ./storybook-static/  # Give all permissions to the storybook-static directory
+        run: icacls storybook-static /grant Everyone:(OI)(CI)F  # Give all permissions to the storybook-static directory
         
       - name: Upload Storybook Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook-static
-          path: ./storybook-static/**
+          path: storybook-static/**
 
   deploy-prod:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Run on Windows
     needs: build
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Download Storybook Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook-static 
 
       - name: List Downloaded Artifacts
-        run: ls -la ./
+        run: dir  # Windows command to list files in the current directory
 
       - name: Install Vercel CLI
         run: npm install -g vercel
@@ -67,10 +67,10 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}
         run: |
-          vercel --prod --yes --token "$VERCEL_TOKEN" --team "$TEAM_TOKEN" ./storybook-static
+          vercel --prod --yes --token "$VERCEL_TOKEN" --team "$TEAM_TOKEN" storybook-static
 
   publish:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Run on Windows
     needs: build
     if: github.ref == 'refs/heads/main'
     steps:
@@ -80,7 +80,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 'lts/*'  # Latest Node.js LTS version
 
       - name: Install dependencies
         run: npm install
