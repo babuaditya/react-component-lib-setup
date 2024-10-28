@@ -87,7 +87,7 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: 'lts/*'
-            
+
         - name: Install dependencies
           run: npm install
 
@@ -103,4 +103,4 @@ jobs:
             npm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
 
         - name: Publish to npm
-          run: npm publish ./lib --access public
+          run: npm publish ./lib 
