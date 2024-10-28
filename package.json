@@ -2,9 +2,11 @@
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
-  "name":"adit-design-system",
-  "version": "0.0.2",
-  "author": {"name": "Aditya kumar Singh"},
+  "name": "adit-design-system",
+  "version": "0.0.5",
+  "author": {
+    "name": "Aditya kumar Singh"
+  },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@rollup/plugin-commonjs": "^28.0.1",
@@ -30,12 +32,16 @@
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-  "react": "^18.3.1",
-  "react-dom": "^18.3.1"
-},
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook-static",
-    "build":"rollup -c"
-  }
+    "build": "rollup -c"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ]
 }

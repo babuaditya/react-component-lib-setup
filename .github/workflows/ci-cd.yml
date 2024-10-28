@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   pull_request:
     branches:
-      - main
+      - '*'
   push:
     branches:
       - main
@@ -46,6 +46,12 @@ jobs:
           name: storybook-static
           path: storybook-static/**
 
+      - name: Upload Built Library Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: library-build
+          path: lib/**
+
   # deploy-prod:
   #   runs-on: windows-latest  # Run on Windows
   #   needs: build
@@ -70,25 +76,33 @@ jobs:
   #         vercel --prod --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
 
   publish:
-    runs-on: windows-latest  # Run on Windows
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      runs-on: windows-latest
+      needs: build
+      if: github.ref == 'refs/heads/main'
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 'lts/*'  # Latest Node.js LTS version
+        - name: Set up Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: 'lts/*'
 
-      - name: Install dependencies
-        run: npm install
+        - name: Download Library Build Artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: library-build
 
-      - name: Build Library
-        run: npm run build
+        - name: Install dependencies (Without Building Again)
+          run: npm ci  # Only install without running scripts or modifying the build
 
-      - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        - name: Configure npm for Publishing
+          env:
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          run: |
+            echo Build completed on `date`
+            npm config set @adit-design-system:registry https://registry.npmjs.org/
+            npm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
+
+        - name: Publish to npm
+          run: npm publish ./lib --access public
