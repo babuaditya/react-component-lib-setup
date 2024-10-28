@@ -31,8 +31,9 @@ jobs:
 
       - name: Build Storybook
         run: npm run build-storybook 
-      - name: List Build Output # Storybook build command to create `storybook-static`
-        run: ls -la ./storybook-static/
+
+      - name: List Build Output
+        run: ls -la ./storybook-static/  # Verify Storybook output
 
       - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v3
@@ -40,26 +41,29 @@ jobs:
           name: storybook-static
           path: ./storybook-static
 
-
   # Deploy to Vercel (Production server after merge to main)
   deploy-prod:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: Deploy to Vercel (Production)
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          Team_TOKEN:    ${{secrets.TEAM_TOKEN}}
-          steps:
       - name: Download Storybook Artifacts
         uses: actions/download-artifact@v3
         with:
           name: storybook-static 
+
+      - name: List Downloaded Artifacts
+        run: ls -la ./storybook-static/  # Verify downloaded artifacts
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel (Production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}  # Adjust this if necessary
         run: |
-          ls -la ./storybook-static/
-          npm install -g vercel
-          vercel --prod --yes --token "$VERCEL_TOKEN" --scope "$TEAM_TOKEN" ./storybook-static 
+          vercel --prod --yes --token "$VERCEL_TOKEN" --team "$TEAM_TOKEN" ./storybook-static 
 
   # Publish to npm
   publish:
