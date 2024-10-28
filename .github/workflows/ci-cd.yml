@@ -35,8 +35,8 @@ jobs:
       - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: storybook
-          path: storybook-static
+          name: storybook-static
+          path: ./storybook-static
 
   # Deploy to Vercel (Development server for PRs)
   deploy-dev:
