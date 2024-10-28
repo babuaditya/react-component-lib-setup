@@ -57,7 +57,7 @@ jobs:
           name: storybook-static 
 
       - name: List Downloaded Artifacts
-        run: ls -la ./storybook-static/
+        run: ls -la ./
 
       - name: Install Vercel CLI
         run: npm install -g vercel
