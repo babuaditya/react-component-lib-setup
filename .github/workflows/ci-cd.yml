@@ -87,14 +87,12 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: 'lts/*'
+            
+        - name: Install dependencies
+          run: npm install
 
-        - name: Download Library Build Artifact
-          uses: actions/download-artifact@v4
-          with:
-            name: library-build
-
-        - name: Install dependencies (Without Building Again)
-          run: npm ci  # Only install without running scripts or modifying the build
+        - name: Build Library
+          run: npm run build
 
         - name: Configure npm for Publishing
           env:
