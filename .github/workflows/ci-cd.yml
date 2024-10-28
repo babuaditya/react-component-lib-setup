@@ -32,6 +32,8 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook  # Storybook build command to create `storybook-static`
 
+        run: ls -la ./storybook-static/
+
       - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -49,11 +51,12 @@ jobs:
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           Team_TOKEN:    ${{secrets.TEAM_TOKEN}}
+          steps:
+      - name: Download Storybook Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook-static 
         run: |
-          echo "Using Tokens for Deployment..."
-          echo "Team Token: $TEAM_TOKEN"  # Consider hiding this in production
-          echo "Vercel Token: $VERCEL_TOKEN"  # Consider hiding this in production
-          actions/download-artifact@v3
           ls -la ./storybook-static/
           npm install -g vercel
           vercel --prod --yes --token "$VERCEL_TOKEN" --scope "$TEAM_TOKEN" ./storybook-static 
