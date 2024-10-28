@@ -46,28 +46,28 @@ jobs:
           name: storybook-static
           path: storybook-static/**
 
-  deploy-prod:
-    runs-on: windows-latest  # Run on Windows
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Download Storybook Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: storybook-static 
+  # deploy-prod:
+  #   runs-on: windows-latest  # Run on Windows
+  #   needs: build
+  #   if: github.ref == 'refs/heads/main'
+  #   steps:
+  #     - name: Download Storybook Artifacts
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: storybook-static 
 
-      - name: List Downloaded Artifacts
-        run: dir  # Windows command to list files in the current directory
+  #     - name: List Downloaded Artifacts
+  #       run: dir  # Windows command to list files in the current directory
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
+  #     - name: Install Vercel CLI
+  #       run: npm install -g vercel
 
-      - name: Deploy to Vercel (Production)
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}
-        run: |
-          vercel --prod --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
+  #     - name: Deploy to Vercel (Production)
+  #       env:
+  #         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  #         TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}
+  #       run: |
+  #         vercel --prod --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
 
   publish:
     runs-on: windows-latest  # Run on Windows
