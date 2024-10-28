@@ -3,7 +3,7 @@
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
   "name":"adit-design-system",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {"name": "Aditya kumar Singh"},
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
