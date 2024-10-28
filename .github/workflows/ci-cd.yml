@@ -62,8 +62,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           Team_TOKEN:    ${{secrets.TEAM_TOKEN}}
         run: |
-          echo $Team_TOKEN $VERCEL_TOKEN
-          echo 
+          echo "$Team_TOKEN $VERCEL_TOKEN" 
           npm install -g vercel
           vercel --prod --yes --token VERCEL_TOKEN  --scope Team_TOKEN 
 
