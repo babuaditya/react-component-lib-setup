@@ -62,7 +62,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           npm install -g vercel
-          vercel --prod --confirm --token $VERCEL_TOKEN
+          vercel --prod --confirm --token $VERCEL_TOKEN --team team_fLPZc7VeNX3Ths9xMn0XsVNM --name react-lib-temp-ex
 
   # Publish to npm
   publish:
