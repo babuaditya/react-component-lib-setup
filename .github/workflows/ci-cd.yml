@@ -60,9 +60,12 @@ jobs:
       - name: Deploy to Vercel (Production)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          Team_TOKEN:    ${{secrets.TEAM_TOKEN}}
         run: |
+          echo $Team_TOKEN $VERCEL_TOKEN
+          echo 
           npm install -g vercel
-          vercel --prod --confirm --token $VERCEL_TOKEN --team team_fLPZc7VeNX3Ths9xMn0XsVNM --name react-lib-temp-ex
+          vercel --prod --yes --token VERCEL_TOKEN  --scope Team_TOKEN 
 
   # Publish to npm
   publish:
