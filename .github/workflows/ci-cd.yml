@@ -67,7 +67,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}
         run: |
-          vercel --prod --yes --token "$VERCEL_TOKEN" --team "$TEAM_TOKEN" storybook-static
+          vercel --prod --yes --token $VERCEL_TOKEN --team $TEAM_TOKEN storybook-static
 
   publish:
     runs-on: windows-latest  # Run on Windows
