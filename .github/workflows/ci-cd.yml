@@ -62,9 +62,12 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           Team_TOKEN:    ${{secrets.TEAM_TOKEN}}
         run: |
-          echo "$Team_TOKEN $VERCEL_TOKEN" 
-          npm install -g vercel
-          vercel --prod --yes --token VERCEL_TOKEN  --scope Team_TOKEN 
+        echo "Using Tokens for Deployment..."
+        echo "Team Token: $TEAM_TOKEN"  # Consider hiding this in production
+        echo "Vercel Token: $VERCEL_TOKEN"  # Consider hiding this in production
+        
+        npm install -g vercel
+        vercel --prod --yes --token "$VERCEL_TOKEN" --scope "$TEAM_TOKEN"
 
   # Publish to npm
   publish:
