@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: storybook-static
-          path: ./
+          path: ./storybook-static/**
 
   deploy-prod:
     runs-on: ubuntu-latest
