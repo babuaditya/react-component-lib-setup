@@ -53,6 +53,7 @@ jobs:
           echo "Using Tokens for Deployment..."
           echo "Team Token: $TEAM_TOKEN"  # Consider hiding this in production
           echo "Vercel Token: $VERCEL_TOKEN"  # Consider hiding this in production
+          actions/download-artifact@v3
           ls -la ./storybook-static/
           npm install -g vercel
           vercel --prod --yes --token "$VERCEL_TOKEN" --scope "$TEAM_TOKEN" ./storybook-static 
