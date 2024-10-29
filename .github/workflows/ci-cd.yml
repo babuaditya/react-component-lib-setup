@@ -71,7 +71,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}
         run: |
-          vercel --previews --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
+          vercel  --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
   
 
   deploy-prod:
