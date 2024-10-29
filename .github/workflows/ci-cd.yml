@@ -54,7 +54,6 @@ jobs:
   deploy-dev:
     runs-on: windows-latest  # Run on Windows
     needs: build
-    if: github.ref == 'refs/heads/main'
     steps:
       - name: Download Storybook Artifacts
         uses: actions/download-artifact@v4
