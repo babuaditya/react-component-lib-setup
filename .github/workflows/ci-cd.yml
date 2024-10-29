@@ -9,48 +9,48 @@ on:
       - main
 
 jobs:
-  # build:
-    # runs-on: windows-latest  # Run on Windows
+  build:
+    runs-on: windows-latest  # Run on Windows
 
-    # steps:
-    #   - name: Checkout code
-    #     uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    #   - name: Set up Node.js
-    #     uses: actions/setup-node@v3
-    #     with:
-    #       node-version: 'lts/*'  # Latest Node.js LTS version
-    #       cache: 'npm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'  # Latest Node.js LTS version
+          cache: 'npm'
 
-    #   - name: Install dependencies
-    #     run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    #   - name: Build Library with Rollup
-    #     run: npm run build
+      - name: Build Library with Rollup
+        run: npm run build
 
-    #   - name: Build Storybook
-    #     run: npm run build-storybook 
+      - name: Build Storybook
+        run: npm run build-storybook 
 
-    #   - name: List Project Directory
-    #     run: dir  # Windows command to list files in the root directory
+      - name: List Project Directory
+        run: dir  # Windows command to list files in the root directory
 
-    #   - name: List Build Output
-    #     run: dir storybook-static  # Check if the directory exists
+      - name: List Build Output
+        run: dir storybook-static  # Check if the directory exists
 
-    #   - name: Change Permissions for Storybook Build
-    #     run: icacls storybook-static /grant Everyone:F  # Grant full permissions to the storybook-static directory
+      - name: Change Permissions for Storybook Build
+        run: icacls storybook-static /grant Everyone:F  # Grant full permissions to the storybook-static directory
         
-    #   - name: Upload Storybook Artifacts
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: storybook-static
-    #       path: storybook-static/**
+      - name: Upload Storybook Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: storybook-static/**
 
-    #   - name: Upload Built Library Artifact
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: library-build
-    #       path: lib/**
+      - name: Upload Built Library Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: library-build
+          path: lib/**
   # deploy-dev:
   #   runs-on: windows-latest  # Run on Windows
   #   needs: build
@@ -125,4 +125,4 @@ jobs:
             npm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
 
         - name: Publish to npm
-          run: npm publish --public 
+          run: npm publish  
