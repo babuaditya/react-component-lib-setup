@@ -6,6 +6,7 @@
   font-size: 14px;
   line-height: 24px;
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  @apply bg-red-200;
 }
 
 .storybook-page h2 {
