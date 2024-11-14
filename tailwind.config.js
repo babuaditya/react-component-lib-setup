@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-import './src/styles/tokens.css';
+import './src/styles/variables.css';
 
 export default {
   content: [
