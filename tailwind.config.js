@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-import './src/styles/variables.css';
 
 export default {
   content: [
