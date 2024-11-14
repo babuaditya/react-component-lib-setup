@@ -3,13 +3,13 @@
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
   "name": "adit-design-system",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module" ,
   "author": {
     "name": "Aditya kumar Singh"
   },
   "devDependencies": {
- 
+
     "@babel/preset-react": "^7.25.9",
     "@babel/preset-typescript": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
