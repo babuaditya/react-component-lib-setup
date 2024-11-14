@@ -4,10 +4,12 @@
   "types": "lib/index.d.ts",
   "name": "adit-design-system",
   "version": "0.0.7",
+  "type": "module" ,
   "author": {
     "name": "Aditya kumar Singh"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
     "@chromatic-com/storybook": "^1.9.0",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
@@ -20,9 +22,24 @@
     "@storybook/react": "^8.3.6",
     "@storybook/react-vite": "^8.3.6",
     "@storybook/test": "^8.3.6",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.14",
     "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rollup": "^4.24.2",
@@ -30,7 +47,10 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^8.3.6",
+    "style-dictionary": "^4.1.4",
     "tailwindcss": "^3.4.14",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
@@ -40,10 +60,17 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o storybook-static",
-    "build": "rollup -c"
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "build:tokens": "npx style-dictionary build",
+    "build": "rollup -c",
+    "test": "jest"
   },
   "files": [
     "lib",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0"
+  }
 }

@@ -17,3 +17,17 @@ A customizable React component library built with Rollup, Tailwind CSS, and Stor
 - [Usage](./docs/usage.md)
 - [Contributing](./docs/contributing.md)
 - [CI/CD Pipeline](./docs/ci-cd.md)
+
+
+eslint 
+jest 
+How to setup jest 
+How to Change Threshold value for yor project 
+why JSDOM Not Node ?
+pnpm 
+
+Extension 
+Tailwind Css Intellisense
+
+//for future
+styleDictionary

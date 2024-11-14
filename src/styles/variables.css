@@ -1,0 +1,62 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+ :root {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-secondary-50: #fef2f2;
+  --color-secondary-100: #fee2e2;
+  --color-secondary-200: #fecaca;
+  --color-secondary-300: #fca5a5;
+  --color-secondary-400: #f87171;
+  --color-secondary-500: #ef4444;
+  --color-secondary-600: #dc2626;
+  --color-secondary-700: #b91c1c;
+  --color-secondary-800: #991b1b;
+  --color-secondary-900: #7f1d1d;
+  --typography-h1-font-size: 36px;
+  --typography-h1-font-weight: 700;
+  --typography-h1-line-height: 44px;
+  --typography-h2-font-size: 32px;
+  --typography-h2-font-weight: 700;
+  --typography-h2-line-height: 40px;
+  --typography-h3-font-size: 28px;
+  --typography-h3-font-weight: 700;
+  --typography-h3-line-height: 36px;
+  --typography-h4-font-size: 24px;
+  --typography-h4-font-weight: 600;
+  --typography-h4-line-height: 32px;
+  --typography-h5-font-size: 20px;
+  --typography-h5-font-weight: 600;
+  --typography-h5-line-height: 28px;
+  --typography-h6-font-size: 18px;
+  --typography-h6-font-weight: 500;
+  --typography-h6-line-height: 28px;
+  --typography-body1-font-size: 16px;
+  --typography-body1-font-weight: 400;
+  --typography-body1-line-height: 24px;
+  --typography-body2-font-size: 14px;
+  --typography-body2-font-weight: 400;
+  --typography-body2-line-height: 20px;
+  --typography-subtitle1-font-size: 16px;
+  --typography-subtitle1-font-weight: 500;
+  --typography-subtitle1-line-height: 24px;
+  --typography-subtitle2-font-size: 14px;
+  --typography-subtitle2-font-weight: 500;
+  --typography-subtitle2-line-height: 20px;
+  --typography-caption-font-size: 12px;
+  --typography-caption-font-weight: 400;
+  --typography-caption-line-height: 16px;
+  --typography-overline-font-size: 10px;
+  --typography-overline-font-weight: 400;
+  --typography-overline-line-height: 16px;
+}
