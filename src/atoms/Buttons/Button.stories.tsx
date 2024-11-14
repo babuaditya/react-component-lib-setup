@@ -32,5 +32,5 @@ export const CustomStyle: StoryFn = Template.bind({});
 CustomStyle.args = {
   label: 'Custom Style Button',
   onClick: () => {},
-  className: 'bg-green-500 hover:bg-green-700',  // Custom background color
+  className: 'bg-secondary-500 hover:bg-primary-700',  // Custom background color
 };
