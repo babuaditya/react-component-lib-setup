@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: windows-latest  
+  test:
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -19,7 +19,29 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'  
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Tests with Coverage Threshold
+        run: npm run test -- --coverage --watchAll=false
+        env:
+          CI: true
+
+  build:
+    runs-on: windows-latest
+    needs: test  # Ensures this job runs only if 'test' succeeds
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
           cache: 'npm'
 
       - name: Install dependencies
@@ -29,17 +51,8 @@ jobs:
         run: npm run build
 
       - name: Build Storybook
-        run: npm run build-storybook 
+        run: npm run build-storybook
 
-      - name: List Project Directory
-        run: dir  
-
-      - name: List Build Output
-        run: dir storybook-static 
-
-      - name: Change Permissions for Storybook Build
-        run: icacls storybook-static /grant Everyone:F  
-        
       - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -51,41 +64,37 @@ jobs:
         with:
           name: library-build
           path: lib/**
+
   deploy-dev:
-    runs-on: windows-latest  
-    needs: build
+    runs-on: windows-latest
+    needs: [build]  # Ensures this job runs only if 'build' succeeds
+
     steps:
       - name: Download Storybook Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: storybook-static 
-
-      - name: List Downloaded Artifacts
-        run: dir  
+          name: storybook-static
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      - name: Deploy to Vercel (Production)
+      - name: Deploy to Vercel (Development)
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           TEAM_TOKEN: ${{ secrets.TEAM_TOKEN }}
         run: |
-          vercel  --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
-  
+          vercel --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
 
   deploy-prod:
-    runs-on: windows-latest 
-    needs: build
+    runs-on: windows-latest
+    needs: [build]  # Ensures this job runs only if 'build' succeeds
     if: github.ref == 'refs/heads/main'
+
     steps:
       - name: Download Storybook Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: storybook-static 
-
-      - name: List Downloaded Artifacts
-        run: dir 
+          name: storybook-static
 
       - name: Install Vercel CLI
         run: npm install -g vercel
@@ -98,31 +107,31 @@ jobs:
           vercel --prod --yes --token "${{ secrets.VERCEL_TOKEN }}" --team "${{ secrets.TEAM_TOKEN }}" ./
 
   publish:
-      runs-on: windows-latest
-      needs: build
-      if: github.ref == 'refs/heads/main'
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
+    runs-on: windows-latest
+    needs: [build]  # Ensures this job runs only if 'build' succeeds
+    if: github.ref == 'refs/heads/main'
 
-        - name: Set up Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: 'lts/*'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-        - name: Install dependencies
-          run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
 
-        - name: Build Library
-          run: npm run build
+      - name: Install dependencies
+        run: npm install
 
-        - name: Configure npm for Publishing
-          env:
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          run: |
-            echo Build completed on `date`
-            npm config set @adit-design-system:registry https://registry.npmjs.org/
-            npm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
+      - name: Build Library
+        run: npm run build
 
-        - name: Publish to npm
-          run: npm publish   
+      - name: Configure npm for Publishing
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm config set @adit-design-system:registry https://registry.npmjs.org/
+          npm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
+
+      - name: Publish to npm
+        run: npm publish

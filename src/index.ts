@@ -1,1 +1,1 @@
-import * from './atoms/Buttons/Buttons.tsx'
+export * from './atoms/index'

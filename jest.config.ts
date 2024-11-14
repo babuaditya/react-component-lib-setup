@@ -2,7 +2,7 @@ export { };
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts',
-    '!**/vendor/**'],
+    '!**/vendor/**', '!src/**/*.stories.tsx','!src/**/index{ts,tsx}'],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
   transform: {
