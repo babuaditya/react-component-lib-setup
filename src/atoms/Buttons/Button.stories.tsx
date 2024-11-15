@@ -1,12 +1,12 @@
 // src/components/Button.stories.tsx
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import Button from './Buttons';
+import {Buttons} from './Buttons';
 
 // Meta configuration for Storybook
 const meta: Meta = {
   title: 'Components/Button',  // Storybook category and component name
-  component: Button,
+  component: Buttons,
   argTypes: {
     // Optionally, add controls for customization in Storybook
     onClick: { action: 'clicked' },  // Log button click events in Storybook
@@ -16,7 +16,7 @@ const meta: Meta = {
 export default meta;
 
 // Template for the Button component
-const Template: StoryFn = (args) => <Button label={''} onClick={() => {}} {...args} />;
+const Template: StoryFn = (args) => <Buttons label={''} onClick={() => {}} {...args} />;
 
 export const Default: StoryFn = Template.bind({});
 Default.args = {

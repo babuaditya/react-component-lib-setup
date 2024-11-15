@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Buttons from './Buttons';
+import {Buttons} from './Buttons';
 
 describe('Button Component', () => {
   it('should render the button with the correct label', () => {

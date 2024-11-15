@@ -9,7 +9,7 @@ export interface ButtonProps {
 
 }
 
-export const Buttons: React.FC<ButtonProps> = ({ label, onClick, href, className = '', as = 'button' }) => {
+export const Buttons = ({ label, onClick, href, className = '', as = 'button' }:ButtonProps) => {
   if (as === 'link') {
     return (
       <a
@@ -31,4 +31,3 @@ export const Buttons: React.FC<ButtonProps> = ({ label, onClick, href, className
   );
 };
 
-export default Buttons;
