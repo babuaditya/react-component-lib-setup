@@ -1,12 +1,26 @@
 import React from 'react';
 
-interface ButtonProps {
+export interface ButtonProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
+  href?: string; 
   className?: string;
+  as?: 'button' | 'link'; 
+
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, className = '' }) => {
+export const Buttons: React.FC<ButtonProps> = ({ label, onClick, href, className = '', as = 'button' }) => {
+  if (as === 'link') {
+    return (
+      <a
+        href={href}
+        className={`px-4 py-2 bg-primary-500 text-white rounded ${className}`}
+      >
+        {label}
+      </a>
+    );
+  }
+
   return (
     <button
       className={`px-4 py-2 bg-primary-500 text-white rounded ${className}`}
@@ -17,4 +31,4 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, className = '' }) => {
   );
 };
 
-export default Button;
+export default Buttons;

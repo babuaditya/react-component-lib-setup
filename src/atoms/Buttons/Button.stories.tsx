@@ -16,21 +16,33 @@ const meta: Meta = {
 export default meta;
 
 // Template for the Button component
-const Template: StoryFn = (args) => <Button label={''} onClick={function (): void {
-  throw new Error('Function not implemented.');
-} } {...args} />;
+const Template: StoryFn = (args) => <Button label={''} onClick={() => {}} {...args} />;
 
-// Default story for the Button
 export const Default: StoryFn = Template.bind({});
 Default.args = {
-  label: 'Click Me',  // Default label text
-  onClick: () => {},  // Default no-op click handler
+  label: 'Click Me',  
+  onClick: () => {},  // Default click handler
 };
 
-// Custom Style variant
 export const CustomStyle: StoryFn = Template.bind({});
 CustomStyle.args = {
   label: 'Custom Style Button',
   onClick: () => {},
   className: 'bg-secondary-500 hover:bg-primary-700',  // Custom background color
 };
+
+export const LinkButton: StoryFn = Template.bind({});
+LinkButton.args = {
+  label: 'Go to Google',
+  as: 'link',  
+  href: 'https://google.com', 
+  className: 'bg-blue-500 hover:bg-blue-700',  
+};
+
+export const ButtonWithClickAction: StoryFn = Template.bind({});
+ButtonWithClickAction.args = {
+  label: 'Button with Action',
+  onClick: () => alert('Button clicked!'), 
+  className: 'bg-green-500 hover:bg-green-700', 
+};
+
