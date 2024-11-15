@@ -3,7 +3,7 @@
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
   "name": "adit-design-system",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module" ,
   "author": {
     "name": "Aditya kumar Singh"
