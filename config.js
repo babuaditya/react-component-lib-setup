@@ -1,11 +1,11 @@
 export default {
-  source: ['tokens.json'],
+  source: ['tokens/tokens.json'],
   platforms: {
     css: {
       transformGroup: 'css',
       files: [
         {
-          destination: 'variables.css',
+          destination: './src/styles/variables.css',
           format: 'css/variables',
           // options: {
           //   // Look here 👇

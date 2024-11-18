@@ -2,27 +2,27 @@
  * Do not edit directly, this file was auto-generated.
  */
 
- :root {
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-secondary-50: #fef2f2;
-  --color-secondary-100: #fee2e2;
-  --color-secondary-200: #fecaca;
-  --color-secondary-300: #fca5a5;
-  --color-secondary-400: #f87171;
-  --color-secondary-500: #ef4444;
-  --color-secondary-600: #dc2626;
-  --color-secondary-700: #b91c1c;
-  --color-secondary-800: #991b1b;
-  --color-secondary-900: #7f1d1d;
+:root {
+  --color-primary-50: #F2E7FE;
+  --color-primary-100: #D7B7FD;
+  --color-primary-200: #D7B7FD;
+  --color-primary-300: #BB86FC;
+  --color-primary-400: #7F22FD;
+  --color-primary-500: #6202EE;
+  --color-primary-600: #4B01D1;
+  --color-primary-700: #3700B3;
+  --color-primary-800: #280096;
+  --color-primary-900: #190078;
+  --color-secondary-50: #86FFEA;
+  --color-secondary-100: #4FFEE4;
+  --color-secondary-200: #18FDE1;
+  --color-secondary-300: #03DAC6;
+  --color-secondary-400: #02BEB2;
+  --color-secondary-500: ##01A39D;
+  --color-secondary-600: #018786;
+  --color-secondary-700: #00696B;
+  --color-secondary-800: #004B4F;
+  --color-secondary-900: #002F33;
   --typography-h1-font-size: 36px;
   --typography-h1-font-weight: 700;
   --typography-h1-line-height: 44px;

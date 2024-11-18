@@ -6,9 +6,10 @@ This document outlines the Continuous Integration and Continuous Deployment (CI/
 
 The CI/CD pipeline automates the processes of building, testing, and deploying the project. It consists of three main jobs:
 
-1. **Build**: Compiles the library and builds Storybook.
-2. **Deploy**: Deploys the built Storybook and library to Vercel.
-3. **Publish**: Publishes the library to NPM.
+1.**Test**: Test the coverage of lines. 
+2. **Build**: Compiles the library and builds Storybook.
+3. **Deploy**: Deploys the built Storybook and library to Vercel.
+4. **Publish**: Publishes the library to NPM.
 
 ## Workflow Trigger 🚦
 
@@ -20,6 +21,12 @@ The pipeline is triggered on:
 ## Jobs 🛠️
 
 ### 1. Build Job 🏗️
+- **Checkout Code**: Retrieves the latest code from the repository.
+- **Set up Node.js**: Installs the latest Node.js LTS version and caches npm modules.
+- **Install Dependencies**: Installs all necessary project dependencies.
+- **Check the coverage**:Find the coverage Percentage.
+
+### 2. Build Job 🏗️
 
 This job runs on Windows and includes the following steps:
 
@@ -34,7 +41,7 @@ This job runs on Windows and includes the following steps:
 - **Upload Storybook Artifacts**: Uploads the generated Storybook static files as artifacts.
 - **Upload Built Library Artifact**: Uploads the built library files as artifacts.
 
-### 2. Deploy to Vercel (Development) 🌐
+### 3. Deploy to Vercel (Development) 🌐
 
 This job is dependent on the `build` job and runs on Windows. It executes the following steps:
 
@@ -43,7 +50,7 @@ This job is dependent on the `build` job and runs on Windows. It executes the fo
 - **Install Vercel CLI**: Installs the Vercel CLI globally.
 - **Deploy to Vercel (Production)**: Deploys the application to Vercel using the Vercel token and team token stored in GitHub Secrets.
 
-### 3. Deploy to Vercel (Production) 🚀
+### 4. Deploy to Vercel (Production) 🚀
 
 This job is similar to the development deployment but runs only on pushes to the `main` branch. It includes:
 
@@ -52,7 +59,7 @@ This job is similar to the development deployment but runs only on pushes to the
 - **Install Vercel CLI**: Installs the Vercel CLI.
 - **Deploy to Vercel (Production)**: Deploys to Vercel in production mode using the specified tokens.
 
-### 4. Publish to NPM 📦
+### 5. Publish to NPM 📦
 
 This job runs on pushes to the `main` branch and includes the following steps:
 
@@ -68,7 +75,7 @@ This job runs on pushes to the `main` branch and includes the following steps:
 Ensure the following secrets are set up in your GitHub repository settings:
 
 - `VERCEL_TOKEN`: Your Vercel authentication token.
-- `TEAM_TOKEN`: Your Vercel team token (if applicable).
+- `TEAM_TOKEN`: Your Vercel team token .
 - `NPM_TOKEN`: Your npm authentication token.
 
 ## Conclusion 🏁

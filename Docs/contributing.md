@@ -10,5 +10,5 @@ Thank you for your interest in contributing to our project! We appreciate your e
 2. **Clone Your Fork**  
    Clone your forked repository to your local machine:
    ```bash
-   git clone https://github.com/your-username/repository-name.git
-   cd repository-name
+   git clone https://github.com/babuaditya/react-component-lib-setup.git
+   cd react-component-lib-setup

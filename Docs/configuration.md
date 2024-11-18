@@ -49,3 +49,37 @@ module.exports = {
   },
   plugins: [],
 };
+
+
+  ```
+
+## Style Dictionary 
+
+### 1. Token Configuration for Generating Style token according to figma or sketch its turn out to be very helpful 🖌️
+
+Customize your `\tokens\token.json` file. This files allows you to change ur theme in single build 
+
+```js
+{
+  "color": {
+    "primary": {
+      "50": { "value": "#F2E7FE" },
+      "100": { "value": "#D7B7FD" },
+      "200": { "value": "#D7B7FD" },
+      "300": { "value": "#BB86FC" },
+      "400": { "value": "#7F22FD" },
+      "500": { "value": "#6202EE" },
+      "600": { "value": "#4B01D1" },
+      "700": { "value": "#3700B3" },
+      "800": { "value": "#280096" },
+      "900": { "value": "#190078" }
+    },
+}
+}
+```
+
+which generate token in `styles\variable.css` file using script in `config.js` make sure when u change some thing in `token.json` 
+locally you have run the following command:
+```bash
+npm run build:tokens
+```

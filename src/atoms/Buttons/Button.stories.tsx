@@ -5,11 +5,10 @@ import {Buttons} from './Buttons';
 
 // Meta configuration for Storybook
 const meta: Meta = {
-  title: 'Components/Button',  // Storybook category and component name
+  title: 'Atoms/Button',  
   component: Buttons,
   argTypes: {
-    // Optionally, add controls for customization in Storybook
-    onClick: { action: 'clicked' },  // Log button click events in Storybook
+    onClick: { action: 'clicked' },  
   },
 };
 
@@ -20,15 +19,15 @@ const Template: StoryFn = (args) => <Buttons label={''} onClick={() => {}} {...a
 
 export const Default: StoryFn = Template.bind({});
 Default.args = {
-  label: 'Click Me',  
-  onClick: () => {},  // Default click handler
+  label: 'Default',  
+  onClick: () => {},  
 };
 
 export const CustomStyle: StoryFn = Template.bind({});
 CustomStyle.args = {
   label: 'Custom Style Button',
-  onClick: () => {},
-  className: 'bg-secondary-500 hover:bg-primary-700',  // Custom background color
+  onClick: () => {'Alert clicked'},
+  className: 'mt-4', 
 };
 
 export const LinkButton: StoryFn = Template.bind({});

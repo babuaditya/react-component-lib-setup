@@ -1,0 +1,27 @@
+.btn{
+  @apply  flex px-[20px]   rounded-[20px] py-[9.5px] text-center font-bold text-primary-50 w-fit;
+  
+}
+.btn-primary{
+  @apply bg-primary-500 hover:bg-primary-300; 
+}
+
+.btn-secondary{
+  @apply bg-secondary-600 hover:bg-primary-500;
+}
+.btn-disabled{
+  background-color: rgba(0, 0, 0, 0.38);
+}
+.loader {
+  @apply h-6 w-6 border-e-primary-500 border-[2px] rounded-full mr-2 ;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 

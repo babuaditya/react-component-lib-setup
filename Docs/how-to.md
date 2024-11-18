@@ -6,6 +6,16 @@ Welcome to the component library project! This guide will help you get started b
 
 **Before Onboarding, one should be familiar with the following stack:**
 
+- [x] **Jest** 🧩: A testing framework for JavaScript, widely used for testing React applications. 
+  It provides tools for writing unit tests, mocking functions, and creating snapshot tests to 
+  ensure your components behave as expected.  
+  📚 [Jest Documentation](https://jestjs.io/docs/getting-started)
+
+- [x] **React Testing Library (RTL)** 🧩: A library for testing React components. RTL emphasizes testing your 
+  components the way a user would interact with them, focusing on rendering, user events, and querying 
+  elements in the DOM.  
+  📚 [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
+- [ ] 
 - [x] **React v18** 🧩: A JavaScript library for building user interfaces. Make sure you understand components, state management, and hooks.
 - [x] **Storybook v8** 📖: A tool for developing UI components in isolation. Familiarize yourself with how to create and test components in Storybook.
 - [x] **Tailwind CSS v3** 🎨: A utility-first CSS framework that allows you to style components directly within your HTML. Understand the core concepts of utility classes and responsive design.
