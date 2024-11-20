@@ -20,16 +20,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run Tests with Coverage Threshold
-        run: pnpm test -- --coverage --watchAll=false
+        run: npm run test 
         env:
           CI: true
 
@@ -45,19 +42,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
-          cache: 'pnpm'
-
-      - name: Install pnpm
-        run: npm install -g pnpm
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build Library with Rollup
-        run: pnpm build
+        run: npm run build
 
       - name: Build Storybook
-        run: pnpm build-storybook
+        run: npm run build-storybook
 
       - name: Upload Storybook Artifacts
         uses: actions/upload-artifact@v4
@@ -82,7 +76,7 @@ jobs:
           name: storybook-static
 
       - name: Install Vercel CLI
-        run: pnpm add -g vercel
+        run: npm install -g vercel
 
       - name: Deploy to Vercel (Development)
         env:
@@ -103,7 +97,7 @@ jobs:
           name: storybook-static
 
       - name: Install Vercel CLI
-        run: pnpm add -g vercel
+        run: npm install -g vercel
 
       - name: Deploy to Vercel (Production)
         env:
@@ -126,21 +120,18 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build Library
-        run: pnpm build
+        run: npm run build
 
-      - name: Configure pnpm for Publishing
+      - name: Configure npm for Publishing
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm config set @adit-design-system:registry https://registry.npmjs.org/
-          pnpm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
+          npm config set @adit-design-system:registry https://registry.npmjs.org/
+          npm config set //registry.npmjs.org/:_authToken "${{ secrets.NPM_TOKEN }}"
 
       - name: Publish to npm
-        run: pnpm publish
+        run: npm publish

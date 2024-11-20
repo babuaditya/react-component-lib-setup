@@ -5,8 +5,12 @@ module.exports = {
     '!**/vendor/**', '!src/**/*.stories.tsx','!src/**/index{ts,tsx}'],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
+  moduleNameMapper:{
+    "\\.(css)$": "identity-obj-proxy"
+  },
   transform: {
-    ".(ts|tsx)": "ts-jest"
+    ".(ts|tsx)": "ts-jest",
+   
   },
 
   coveragePathIgnorePatterns: [
@@ -16,14 +20,15 @@ module.exports = {
     "package-lock.json",
     "reportWebVitals.ts",
     "setupTests.ts",
-    "index.tsx"
+    "index.tsx",
+    "index.ts"
   ],
   coverageThreshold: {
     global: {
-      branches: 0,
-      functions: 0,
-      lines: 0,
-      statements: 0,
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70,
     },
   },
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
