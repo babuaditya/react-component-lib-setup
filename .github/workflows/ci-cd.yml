@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Run Tests with Coverage Threshold
         run: npm run test 
@@ -45,7 +45,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Build Library with Rollup
         run: npm run build
@@ -76,7 +76,7 @@ jobs:
           name: storybook-static
 
       - name: Install Vercel CLI
-        run: npm install --legacy-peer-deps -g vercel
+        run: npm install -g vercel
 
       - name: Deploy to Vercel (Development)
         env:
@@ -97,7 +97,7 @@ jobs:
           name: storybook-static
 
       - name: Install Vercel CLI
-        run: npm install --legacy-peer-deps -g vercel
+        run: npm install -g vercel
 
       - name: Deploy to Vercel (Production)
         env:
@@ -121,7 +121,7 @@ jobs:
           node-version: 'lts/*'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Build Library
         run: npm run build
